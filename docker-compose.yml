@@ -1,0 +1,33 @@
+networks:
+    ds-net:
+        driver: bridge
+
+services:
+    mysql:
+        image: mysql:5.7
+        container_name: ds-mysql
+        tty: true
+        ports:
+            - "4208:3306"
+        volumes:
+            - "./var/libclea/mysql/:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: 1234
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: miusuario
+            MYSQL_PASSWORD: mipassword
+        networks:
+            - ds-net
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: ds-phpmyadmin
+        ports:
+            - "4283:80"
+        environment:
+            PMA_HOST: ds-wordpress-6.1.1-mysql
+            MYSQL_ROOT_PASSWORD: 1234
+        depends_on:
+            - mysql
+        networks:
+            - ds-net
