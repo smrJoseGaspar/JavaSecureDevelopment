@@ -14,7 +14,7 @@ import java.util.logging.Level;
  * @author josegaspar
  */
 public class SQLInjectionExample {
-    
+    // Conection data
     private static Connection con=null;
     private static final String driver="com.mysql.cj.jdbc.Driver";
     private static final String user="root";
@@ -26,14 +26,24 @@ public class SQLInjectionExample {
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your username: ");
+        /*
+            Example of SQLInjection: ' OR '1'='1
+        */
         String username = scanner.nextLine();
         
         
         try {
+            // Connecting with DB
+            Class.forName(driver);
             con=DriverManager.getConnection(url, user, passwd);
+            System.out.println("Data Base conection ... OK.");
+            
+            // Execute SQL Sentence
             Statement statement = con.createStatement();
             String query = "SELECT * FROM users WHERE username = '" + username + "';";
+            System.out.println("Query::"+query);
             ResultSet resultSet;
+            
             resultSet = statement.executeQuery(query);
             
             if(resultSet.next()) {
@@ -43,6 +53,8 @@ public class SQLInjectionExample {
             }
             con.close();
         } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(SQLInjectionExample.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(SQLInjectionExample.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
