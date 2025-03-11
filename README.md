@@ -1,7 +1,8 @@
 # Secure Software Development
 ## Content
 1. Software Development Life Cycle.
-2. Secure Software Development with Java.
+2. Software Development Life Cycle Models
+3. Secure Software Development with Java.
 
 
 ## 1. Software Development Life Cycle.
@@ -10,11 +11,41 @@
 Nowadays, there are many software development models and it is a challenge for the test engineer to adapt to each of them in order to cover all tasks and activities in an optimal way.
 
 Software development is a historically mature engineering process, which has as its basic methodology the software development life cycle (SDLC). This cycle, which has different application models, always consists of five traditional stages: **Requirements Analysis**, **Design**, **Development**, **Testing** and **Maintenance**.
-![Figure 1. Software Development Life Cicle](images/SDLC.jpg)
+![Figure. Software Development Life Cicle](images/SDLC.jpg)
 
-## 2. Secure Software Development with Java.
+## 2. Software Development Life Cycle Models
+To this day, we have more than 50 recognized SDLC models in use. But None of them is perfect, and each brings its favorable aspects and disadvantages for a specific software development project or a team.
 
-### 2.1. SQL Injection in Java
+Here, we have listed the top five most popular SDLC models:
+
+### 2.1. Waterfall Model
+It is the fundamental model of the software development life cycle. This is a very simple model. The waterfall model is not in practice anymore, but it is the basis for all other SDLC models. Because of its simple structure, the waterfall model is easier to use and provides a tangible output. In the waterfall model, once a phase seems to be completed, it cannot be changed, and due to this less flexible nature, the waterfall model is not in practice anymore. 
+![Figure. Waterfall Model](https://miro.medium.com/v2/resize:fit:500/1*tGKCSfTfV8E8t4atqrLE4A.png)
+
+### 2. Agile Model
+The agile model in SDLC was mainly designed to adapt to changing requests quickly. The main goal of the Agile model is to facilitate quick project completion. The agile model refers to a group of development processes. These processes have some similar characteristics but also possess certain subtle differences among themselves.
+![Figure. Agile Model](https://cdn.educba.com/academy/wp-content/uploads/2019/09/Agile-in-SDLC.png)
+
+
+### 3. Iterative Model
+In the Iterative model in SDLC, each cycle results in a semi-developed but deployable version; with each cycle, some requirements are added to the software, and the final cycle results in the software with the complete requirement specification.
+![Figure. Interactive Model](https://www.researchgate.net/publication/338710620/figure/fig4/AS:849628610166790@1579578654482/SDLC-Iterative-Model-2.jpg) 
+
+### 4. Spiral Model
+The spiral model in SDLC is one of the most crucial SDLC models that provides support for risk handling. It has various spirals in its diagrammatic representation; the number of spirals depends upon the type of project. Each loop in the spiral structure indicates the Phases of the Spiral model.  
+![Figure. ](https://www.softwaretestingmaterial.com/wp-content/uploads/2016/03/Spiral-Model-In-SDLC.png)
+### 5. V-Shaped Model
+The V-shaped model in SDLC is executed in a sequential manner in V-shape. Each stage or phase of this model is integrated with a testing phase. After every development phase, a testing phase is associated with it, and the next phase will start once the previous phase is completed, i.e., development & testing. It is also known as the verification or validation model.
+![Figure. V-Shaphed Model](images/ModelV_SDLC.png) 
+
+### 6. Big Bang Model
+The Big Bang model in SDLC is a term used to describe an informal and unstructured approach to software development, where there is no specific planning, documentation, or well-defined phases.
+he Big bang model is an SDLC model that starts from nothing. It is the simplest model in SDLC (Software Development Life Cycle) as it requires almost no planning. However, it requires lots of funds and coding and takes more time. The name big bang model was set after the “Great Big Bang” which led to the development of galaxies, stars, planets, etc. Similarly, this SDLC model combines time, efforts, and resources to build a product. The product is gradually built as the requirements from the customer come, however, the end product might not meet the actual requirements.
+![Figure SDLC Big Bang Model](/images/bigbang_SDLC.png)
+
+## 3. Secure Software Development with Java.
+
+### 3.1. SQL Injection in Java
 **SQL injection** is a common security vulnerability where an attacker can manipulate SQL queries by inserting malicious input. Here's an example of how this might occur in a Java application:
 
 #### Insecure Example:
