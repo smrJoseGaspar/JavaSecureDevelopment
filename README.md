@@ -29,7 +29,7 @@ The agile model in SDLC was mainly designed to adapt to changing requests quickl
 
 ### 2.3. Iterative Model
 In the Iterative model in SDLC, each cycle results in a semi-developed but deployable version; with each cycle, some requirements are added to the software, and the final cycle results in the software with the complete requirement specification.
-![Figure. Interactive Model](https://www.researchgate.net/publication/338710620/figure/fig4/AS:849628610166790@1579578654482/SDLC-Iterative-Model-2.jpg) 
+![Figure. Interactive Model](/images/interactiveModel_SDLC.png) 
 
 ### 2.4. Spiral Model
 The spiral model in SDLC is one of the most crucial SDLC models that provides support for risk handling. It has various spirals in its diagrammatic representation; the number of spirals depends upon the type of project. Each loop in the spiral structure indicates the Phases of the Spiral model.  
@@ -131,6 +131,60 @@ public class SecureSQLExample {
     }
 }
 ```
+
+### 3.2. Example Cross-Site Scripting (XSS) in Java
+**Cross-Site Scripting (XSS)** is a common web security vulnerability that allows attackers to inject malicious scripts into web applications. Here's an example of a potential XSS vulnerability and how it might manifest in a Java-based application:
+
+#### Example Scenario
+Consider a Java-based web application that retrieves user input and displays it back on a web page without proper validation or sanitization:
+
+```java
+import java.io.IOException;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class XSSExampleServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userInput = request.getParameter("userInput");
+
+        // Vulnerable: Displaying user input without sanitization
+        response.setContentType("text/html");
+        response.getWriter().println("<html><body>");
+        response.getWriter().println("<h1>Welcome!</h1>");
+        response.getWriter().println("<p>" + userInput + "</p>"); // XSS vulnerability
+        response.getWriter().println("</body></html>");
+    }
+}
+```
+#### How the Attack Works
+If the user submits a script as input, such as:
+
+```html
+<script>alert('XSS Attack!');</script>
+```
+The application would render it on the page, resulting in the script being executed in the victim's browser. This can lead to stealing cookies, session hijacking, or other malicious activities.
+
+#### How to Mitigate
+To prevent XSS vulnerabilities in Java applications, you should:
+
+Sanitize user input: Use libraries like *OWASP Java Encoder* to encode user input before displaying it.
+
+Use input validation: Restrict input to only expected values using validation frameworks.
+
+Implement a **Content Security Policy (CSP):** This can block malicious scripts from executing.
+
+Escape special characters: Avoid directly embedding user input in HTML, JavaScript, or CSS without escaping characters properly.
+
+For example, using OWASP Java Encoder:
+
+```java
+import org.owasp.encoder.Encode;
+
+response.getWriter().println("<p>" + Encode.forHtml(userInput) + "</p>");
+```
+
+This simple change ensures that any special characters in the user input are safely encoded, preventing them from being treated as executable code.
+
 
 #### Key Takeaways:
 1. Always use `PreparedStatement` or similar mechanisms to avoid directly concatenating user input into SQL queries.
